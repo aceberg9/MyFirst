@@ -2,6 +2,9 @@
 .content img {
     height: 200px;
 }
+.wall img {
+    height: 200px;
+}
 .descriptionBlock {
     padding: 10px;
 }

@@ -1,51 +1,91 @@
-import post from "../components/Profile/MyPosts/Post/Post";
-import {rerenderEntrireTree} from "../render";
+let store ={
+    _state: {
+        profilePage: {
+            posts: [
+                {id: 1, post: 'asdadadasdasd', likesCount: 12},
+                {id: 2, post: 'It\'s my first post', likesCount: 12},
+                {id: 3, post: 'Yo'},
+                {id: 4, post: 'Yo'},
+                {id: 5, post: 'Yo'},
+                {id: 6, post: 'Yo'},
+                {id: 7, post: 'Yo'}
+            ],
+            newPostText: 'yt-kamasutra.com'
+        },
+        dialogsPage: {
+            dialogs: [
+                {id: 1, name: 'Dimich'},
+                {id: 2, name: 'Andrey'},
+                {id: 3, name: 'Sveta'},
+                {id: 4, name: 'Sasha'},
+                {id: 5, name: 'Malera'},
+                {id: 6, name: 'Mama'},
+                {id: 7, name: 'Papa'}
+            ],
+            messages: [
+                {id: 1, message: 'hi'},
+                {id: 2, message: 'How are you?'},
+                {id: 3, message: 'Yo'},
+                {id: 4, message: 'Yo'},
+                {id: 5, message: 'Yo'},
+                {id: 6, message: 'Yo'},
+                {id: 7, message: 'Yo'},
+                {id: 7, message: 'Yo'},
+                {id: 7, message: 'Yo'}
+            ]
+        },
+        sidebar: {}
 
-let state ={
-    profilePage: {
-        posts: [
-            {id: 1, post: 'asdadadasdasd', likesCount: 12},
-            {id: 2, post: 'It\'s my first post', likesCount: 12},
-            {id: 3, post: 'Yo'},
-            {id: 4, post: 'Yo'},
-            {id: 5, post: 'Yo'},
-            {id: 6, post: 'Yo'},
-            {id: 7, post: 'Yo'}
-        ]
     },
-    dialogsPage: {
-        dialogs: [
-            {id: 1, name: 'Dimich'},
-            {id: 2, name: 'Andrey'},
-            {id: 3, name: 'Sveta'},
-            {id: 4, name: 'Sasha'},
-            {id: 5, name: 'Malera'},
-            {id: 6, name: 'Mama'},
-            {id: 7, name: 'Papa'}
-        ],
-        messages: [
-            {id: 1, message: 'hi'},
-            {id: 2, message: 'How are you?'},
-            {id: 3, message: 'Yo'},
-            {id: 4, message: 'Yo'},
-            {id: 5, message: 'Yo'},
-            {id: 6, message: 'Yo'},
-            {id: 7, message: 'Yo'},
-            {id: 7, message: 'Yo'},
-            {id: 7, message: 'Yo'}
-        ]
+    _callSubscriber() {
+        console.log('State changed')
     },
-    sidebar: {}
+
+    getState() {
+        return this._state;
+    },
+    subscribe(observer) {
+        this._callSubscriber = observer; //наблюдатель
+    },
+
+    addPost() {
+        let newPost = {
+            id: 5,
+            post: this._state.profilePage.newPostText,
+            likesCount: 0
+        };
+
+        this._state.profilePage.posts.push(newPost);
+        this._state.profilePage.newPostText='';
+        this._callSubscriber(this._state)
+    },
+    updateNewPostText(newText) {
+
+        this._state.profilePage.newPostText = newText;
+        this._callSubscriber(this._state)
+    },
+    
+    dispatch(action) { // { type: 'ADD-POST'}
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: 5,
+                post: this._state.profilePage.newPostText,
+                likesCount: 0
+            };
+
+            this._state.profilePage.posts.push(newPost);
+            this._state.profilePage.newPostText='';
+            this._callSubscriber(this._state)
+        }
+        else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText;
+            this._callSubscriber(this._state)
+        }
+
+    }
+
+
 
 }
-export let addPost = (postMessage) => {
-    let newPost = {
-        id: 5,
-        post: postMessage,
-        likesCount: 0
-    };
-
-    state.profilePage.posts.push(newPost);
-    rerenderEntrireTree(state)
-}
-export default state;
+export default store;
+window.state = store;
