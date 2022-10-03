@@ -33,8 +33,8 @@ const App = (props) => {
 
                         <Route path={"/Dialogs"} render={()=>
                             <Dialogs
-
                                 store={props.store}
+
                             />}
                         />
                         <Route path={'/News'} render={()=><News />}/>
