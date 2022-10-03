@@ -14,6 +14,7 @@ import Settings from "./components/Settings/Settings";
 
 
 const App = (props) => {
+
     return (
                 <div className='app-wrapper'>
                 <Header/>
@@ -21,12 +22,15 @@ const App = (props) => {
                 <div className='app-wrapper-content'>
                     {/*    <Routes>*/}
               {/*      <Switch>*/}
+
                         <Route path="/profile" render={()=>
+
                             <Profile
                                 profilePage={props.state.profilePage}
                                 dispatch={props.dispatch}
                             />}
                         />
+
                         <Route path={"/Dialogs"} render={()=>
                             <Dialogs
 
