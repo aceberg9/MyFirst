@@ -12,7 +12,7 @@ const Profile = (props) => {
         <MyPostsContainer //posts={props.profilePage.posts}
                  //newPostText={props.profilePage.newPostText}
                  //dispatch={props.dispatch}
-            store={props.store}
+            //store={props.store}
 
             /*Вызываем MyPosts с отправленными
         туда компонентами posts которые равны posts*/

@@ -12,41 +12,39 @@ import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 
-
-
 const App = (props) => {
 
     return (
-                <div className='app-wrapper'>
-                <Header/>
-                <Navbar/>
-                <div className='app-wrapper-content'>
-                    {/*    <Routes>*/}
-              {/*      <Switch>*/}
+        <div className='app-wrapper'>
+            <Header/>
+            <Navbar/>
+            <div className='app-wrapper-content'>
+                {/*    <Routes>*/}
+                {/*      <Switch>*/}
 
-                        <Route path="/profile" render={()=>
+                <Route path="/profile" render={() =>
 
-                            <Profile
-                                //profilePage={props.state.profilePage}
-                                //dispatch={props.dispatch}
-                                store={props.store}
-                            />}
-                        />
+                    <Profile
+                        //profilePage={props.state.profilePage}
+                        //dispatch={props.dispatch}
+                        //store={props.store}
+                    />}
+                />
 
-                        <Route path={"/Dialogs"} render={()=>
-                            <DialogsContainer
-                                store={props.store}
+                <Route path={"/Dialogs"} render={() =>
+                    <DialogsContainer
+                        //store={props.store}
 
-                            />}
-                        />
-                        <Route path={'/News'} render={()=><News />}/>
-                        <Route path={'/Music'} render={()=><Music />}/>
-                        <Route path={'/settings'} render={()=><Settings />}/>
-                  {/*  </Switch>*/}
-                        {/*   </Routes>*/}
+                    />}
+                />
+                <Route path={'/News'} render={() => <News/>}/>
+                <Route path={'/Music'} render={() => <Music/>}/>
+                <Route path={'/settings'} render={() => <Settings/>}/>
+                {/*  </Switch>*/}
+                {/*   </Routes>*/}
 
-                </div>
             </div>
+        </div>
 
     )
         ;
