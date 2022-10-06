@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var a={
+        name: "it-kamasutra",
+        protocol: "https",
+        maxStudentCount: 10,
+        isOnline: true,
+        students: ['ivan, andrey, farid'],
+        calssroom: {
+            teacher: {
+                name: 'lol',
+                age: 18
+            }
+        }
+    }
+    var b={...a}
+    b.calssroom = {...a.calssroom}
+    b.calssroom.teacher={...a.calssroom.teacher}
+    b.students={...a.students}
+    b.calssroom.teacher.name="Sergey"
+
+    console.log(a)
+</script>
+</body>
+</html>
