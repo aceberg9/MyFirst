@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './users.module.css'
 
 let Users = (props) => {
-    debugger;
     if (props.users.length === 0) {
         props.setUsers([
 
@@ -63,7 +62,6 @@ let Users = (props) => {
                 </span>
             </div>)
         }
-
     </div>
 }
 
