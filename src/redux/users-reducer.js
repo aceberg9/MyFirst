@@ -3,8 +3,7 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
 
 let initialState =  {
-    users: [ ],
-    newPostText: 'yt-kamasutra.com'
+    users: []
 }
 
 
