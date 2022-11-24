@@ -9,7 +9,7 @@ import {Provider} from "react-redux";
 
 
 ReactDOM.render(
-    <React.StrictMode>
+    //{/*<React.StrictMode>*/} зачем-то был этот тег
         <BrowserRouter>
             <Provider store={store}>
                 <App
@@ -19,8 +19,8 @@ ReactDOM.render(
                     //store={store}
                 />
             </Provider>
-        </BrowserRouter>
-    </React.StrictMode>,
+        </BrowserRouter>,
+      //  {/*</React.StrictMode>,*/}
     document.getElementById('root')
 );
 
