@@ -22,7 +22,7 @@ const App = (props) => {
             <div className='app-wrapper-content'>
                 {/*    <Routes>*/}
                 {/*      <Switch>*/}
-                <Route path="/profile" render={() =>
+                <Route path="/profile/:userId?" render={() =>
                     <ProfileContainer
                         //profilePage={props.state.profilePage}
                         //dispatch={props.dispatch}
