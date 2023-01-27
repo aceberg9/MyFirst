@@ -26,7 +26,6 @@ let Users = (props) => {
         </div>
 
         {
-
             props.users.map(u =>
                 <div key={u.id}>
                 <span>
@@ -37,22 +36,25 @@ let Users = (props) => {
                     </div>
                     <div>
                         {u.followed
-                            ? <button onClick={() => {
+                            ? <button disabled={props.followingInProgress.some(id => id===u.id )} onClick={() => {
+                                props.toggleIsFollowingProgress(true, u.id)
                                 usersAPI.unfollow(u.id).then(data => {
                                         if (data.resultCode == 0) {
                                             props.unfollow(u.id);
                                         }
+                                    props.toggleIsFollowingProgress(false, u.id)
 
                                     })
 
 
                             }}>Unfollow</button>
-                            : <button onClick={() => {
+                            : <button disabled={props.followingInProgress.some(id => id===u.id )} onClick={() => {
+                                props.toggleIsFollowingProgress(true, u.id)
                                 usersAPI.follow(u.id).then(data => {
                                         if (data.resultCode == 0) {
                                             props.follow(u.id);
                                         }
-
+                                    props.toggleIsFollowingProgress(false, u.id)
                                     })
 
 
