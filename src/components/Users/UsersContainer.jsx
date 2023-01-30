@@ -1,39 +1,22 @@
 import React from 'react';
 import {connect} from "react-redux";
-import preloader from '../../assets/images/Bean Eater-1s-200px.svg'
-
 import {
-    follow,
+    follow, getUsers,
     setCurrentPage,
-    setTotalUsersCount,
-    setUsers,
-    toggleIsFetching, toggleIsFollowingProgress,
+    toggleIsFollowingProgress,
     unfollow
 } from "../../redux/users-reducer";
-import {type} from "@testing-library/user-event/dist/type";
-import axios from "axios";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
-import {getUsers, usersAPI} from "../../api/api";
 
 class UsersContainer extends React.Component {
 
     componentDidMount() {
-        this.props.toggleIsFetching(true)
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-                this.props.toggleIsFetching(false)
-                this.props.setUsers(data.items)
-                this.props.setTotalUsersCount(data.totalCount)
-            })
+        this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
 
     onPageChanged = (pageNumber) => { //p=e=event событие
-        this.props.setCurrentPage(pageNumber)
-        this.props.toggleIsFetching(true)
-        usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
-                this.props.toggleIsFetching(false)
-                this.props.setUsers(data.items)
-            })
+        this.props.getUsers(pageNumber, this.props.pageSize)
     }
 
     render() {
@@ -90,4 +73,8 @@ let mapStateToProps = (state) => {
 */
 
 export default connect(mapStateToProps,
-    {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching, toggleIsFollowingProgress})(UsersContainer);
+    {
+        follow, unfollow,
+        setCurrentPage,
+        toggleIsFollowingProgress, getUsers
+    })(UsersContainer);
