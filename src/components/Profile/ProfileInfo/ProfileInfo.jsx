@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import s from './ProfileInfo.module.css';
 import MyPosts from "../MyPosts/MyPosts";
 import Preloader from "../../common/Preloader/Preloader";
+import ProfileStatus from './ProfileStatus'
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
@@ -9,12 +10,12 @@ const ProfileInfo = (props) => {
     }
     return <div>
 
-        <div className={s.wall}>
+        {/*<div className={s.wall}>
             <img src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg"/>
-        </div>
+        </div>*/}
         <div className={s.descriptionBlock}>
             <img src={props.profile.photos.large}/>
-            ava +description https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg
+            <ProfileStatus status={"Hello my friends"} />
         </div>
 
     </div>
